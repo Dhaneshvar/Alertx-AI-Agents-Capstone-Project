@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FDRK AI Assistant Design System - IBM Blue × Futuristic Glassmorphism */
+
+@layer base {
+  :root {
+    /* IBM Blue Gradient System */
+    --ibm-blue-dark: 218 100% 40%;
+    --ibm-blue-light: 218 99% 53%;
+    --ibm-blue-glow: 218 100% 60%;
+    --cyan-accent: 186 100% 50%;
+    --neon-cyan: 180 100% 70%;
+    
+    /* Glassmorphic Backgrounds */
+    --glass-bg: 218 50% 15%;
+    --glass-surface: 218 30% 20%;
+    --glass-border: 218 50% 50%;
+    
+    /* Base Colors */
+    --background: 218 45% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 218 30% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 218 35% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 218 100% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 218 30% 20%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 218 20% 25%;
+    --muted-foreground: 218 10% 65%;
+
+    --accent: 186 100% 50%;
+    --accent-foreground: 218 45% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 218 30% 25%;
+    --input: 218 30% 18%;
+    --ring: 218 99% 53%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar Design */
+    --sidebar-background: 218 40% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 218 100% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 218 30% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 218 30% 20%;
+    --sidebar-ring: 218 99% 53%;
+
+    /* Gradient Definitions */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--ibm-blue-dark)), hsl(var(--ibm-blue-light)));
+    --gradient-glow: linear-gradient(135deg, hsl(var(--ibm-blue-light)), hsl(var(--cyan-accent)));
+    --gradient-glass: linear-gradient(135deg, hsla(var(--glass-bg), 0.4), hsla(var(--glass-surface), 0.2));
+    
+    /* Shadows & Glows */
+    --shadow-glass: 0 8px 32px 0 rgba(15, 98, 254, 0.15);
+    --shadow-glow: 0 0 30px hsla(var(--ibm-blue-glow), 0.3);
+    --shadow-neon: 0 0 20px hsla(var(--neon-cyan), 0.4);
+    
+    /* Animation Timing */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism Utilities */
+  .glass-panel {
+    background: linear-gradient(135deg, hsla(var(--glass-bg), 0.4), hsla(var(--glass-surface), 0.2));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsla(var(--glass-border), 0.2);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-card {
+    background: linear-gradient(135deg, hsla(var(--glass-surface), 0.5), hsla(var(--glass-bg), 0.3));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsla(var(--glass-border), 0.15);
+  }
+
+  .glass-button {
+    background: linear-gradient(135deg, hsla(var(--ibm-blue-dark), 0.6), hsla(var(--ibm-blue-light), 0.4));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid hsla(var(--ibm-blue-light), 0.3);
+  }
+
+  /* Gradient Utilities */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-glow {
+    background: var(--gradient-glow);
+  }
+
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Glow Effects */
+  .glow-hover {
+    transition: var(--transition-smooth);
+  }
+
+  .glow-hover:hover {
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+
+  .neon-border {
+    border: 1px solid hsla(var(--neon-cyan), 0.5);
+    box-shadow: 0 0 10px hsla(var(--neon-cyan), 0.3),
+                inset 0 0 10px hsla(var(--neon-cyan), 0.1);
+  }
+
+  /* Animations */
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsla(var(--ibm-blue-glow), 0.3);
+    }
+    50% {
+      box-shadow: 0 0 30px hsla(var(--ibm-blue-glow), 0.5);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
