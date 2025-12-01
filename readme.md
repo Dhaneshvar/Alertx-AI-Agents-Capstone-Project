@@ -3,13 +3,27 @@
 ## Overview
 Alertx AI is an intelligent environmental monitoring and incident reporting platform by Team FDRK, powered Google Gemini. It helps communities track and respond to environmental issues through AI-powered features including smart live maps, eco-routing, trip sequencing, AI chat agents, carbon dashboards, and incident reporting. The platform integrates streaming video analysis for real-time environmental hazard detection and emergency response.
 
-## User Preferences
-I prefer detailed explanations.
-Ask before making major changes.
-I want iterative development.
-I prefer simple language.
 
 ## System Architecture
+React Frontend → Uploads video
+
+Flask Backend → Streams file & triggers agents
+
+Agent 1 – Visual Analyzer (Gemini 2.5 Flash)
+Extracts objects, risks, scene description from video frames
+
+Agent 2 – Location Intelligence Agent
+Given user coordinates → finds nearby hospitals, police, fire, utilities
+
+Agent 3 – Emergency Recommendation Agent
+Combines insights → produces impact summary + action plan
+
+Agent 4 – Alert Communication Agent (Twilio)
+Generates short auto-call script → triggers voice call
+
+Output
+
+Real-time disaster awareness → emergency contacts → recommended actions → automated voice alert.
 
 ### UI/UX Decisions
 - Light green scanning animation (#10b981) for map interactions.
